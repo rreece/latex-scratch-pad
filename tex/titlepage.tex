@@ -1,0 +1,45 @@
+
+%% ---------------------------------------------------------------------------
+
+\makeatletter
+\def\@maketitle{%
+%    \newpage
+%    \vspace*{-\topskip}      % remove the initial space
+
+    \noindent\rule{\textwidth}{2pt}
+    \vskip 1.5em             % <--- modify this to adjust the separation
+
+    \begingroup\centering    % instead of \begin{center}
+%    \begin{center}
+    \let \footnote \thanks
+    \hrule height \z@        % to avoid the insertion of lineskip glue
+        {\LARGE \@title \par}%
+        \vskip 1.5em 
+        {\large
+            \lineskip .5em 
+            \begin{tabular}[t]{c}%
+                \@author
+            \end{tabular}\par}%
+        \vskip 1em 
+        {\large \@date}%
+%    \end{center}
+    \par\endgroup            % instead of \end{center}
+
+    \vskip 1.0em             % <--- modify this to adjust the separation
+    \noindent\rule{\textwidth}{2pt}
+}
+\makeatother
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{2em}
+
+\input{tex/abstract}
+
+\vspace{1em}
+\vfill{}
+
+%% ---------------------------------------------------------------------------
+
+

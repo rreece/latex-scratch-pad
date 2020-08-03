@@ -1,0 +1,10 @@
+
+%% if draft
+\ifthenelse{\boolean{boolIsDraft}}{
+    \fancyhead[LO]{\textlcsc{draft}: \myversion}
+    \usepackage{lineno}
+    \linenumbers
+}{
+    % pass
+}
+
