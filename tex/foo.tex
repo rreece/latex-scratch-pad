@@ -8,6 +8,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% https://tex.stackexchange.com/questions/218274/how-can-i-draw-commutative-diagrams-in-latex
+
 \catcode`\@=11
 \newdimen\cdsep
 \cdsep=3em
@@ -48,4 +50,61 @@ $$
   \arrow{d}{\sum X_i \ \mathrm{(i.i.d.)}}   &                                   & \arrow{d}{\sum X_i \ \mathrm{(i.i.d.)}}  \cr
   \mathrm{Binomial}                         & \arrow{r}{k \ \mathrm{classes}}   & \mathrm{Multinomial}   \cr
 \end{matrix}
+$$
+
+\vspace{1cm}
+
+$$
+\begin{matrix}
+  \mathrm{Bernoulli}(p)                     & \arrow{r}{k \ \mathrm{classes}}   & \mathrm{Categorical}(p_1, p_2, \ldots, p_{k-1})    \cr
+  \arrow{d}{\sum X_i \ \mathrm{(i.i.d.)}}   &                                   & \arrow{d}{\sum X_i \ \mathrm{(i.i.d.)}}  \cr
+  \mathrm{Binomial}(n, p)                   & \arrow{r}{k \ \mathrm{classes}}   & \mathrm{Multinomial}(n, p_1, p_2, \ldots, p_{k-1})   \cr
+  \arrow{d}{\substack{n\rightarrow\infty\\ np\rightarrow\mu}}         &                                   &    \cr
+  \mathrm{Poisson}(\mu)                     &                                   &   \cr
+\end{matrix}
+$$
+
+\newpage
+
+% https://tex.stackexchange.com/questions/115783/how-to-draw-commutative-diagrams
+
+$$
+\begin{tikzcd}
+    A \arrow{r}{f} \arrow[swap]{dr}{g\circ f}   & B \arrow{d}{g} \\
+                                                & C
+\end{tikzcd}
+$$
+
+\vspace{1cm}
+
+$$
+\begin{tikzcd}
+    \mathrm{Bernoulli}(p)  \arrow{r}{k \ \mathrm{classes}}  \arrow[swap]{d}{\sum_i X_i \ \mathrm{(i.i.d.)}}   
+        & [2em] \mathrm{Categorical}(p_1, p_2, \ldots, p_{k-1}) \arrow[swap]{d}{\sum_i X_i \ \mathrm{(i.i.d.)}}   \\ [1em]
+    \mathrm{Binomial}(n, p) \arrow{r}{k \ \mathrm{classes}}  \arrow[swap]{d}{\substack{n\rightarrow\infty\\ np\rightarrow\mu}}
+        & [2em] \mathrm{Multinomial}(n, p_1, p_2, \ldots, p_{k-1})  \arrow[swap, shift right]{dl}{W}   \\ [2em]
+    \mathrm{Poisson}(\mu)   \arrow[swap]{ru}{(X_1, X_2, \ldots X_k)} \arrow[swap, shift left]{d}{\substack{\mu\rightarrow\infty\\ \sigma^2 = \mu}}
+        &                                               \\ [1em]
+    \mathrm{Normal}(\mu, \sigma^2)    \arrow[swap]{d}{\sum_i \left(\frac{X_i - \mu}{\sigma}\right)^2}
+        &                                               \\ [1em]
+    \chi^2(n)
+        &                                               \\
+\end{tikzcd}
+$$
+
+\vspace{1cm}
+
+$$
+\begin{tikzcd}
+    \mathrm{Bernoulli}(p)  \arrow{r}{k \ \mathrm{classes}}  \arrow[swap]{d}{\sum_i X_i \ \mathrm{(i.i.d.)}}   
+        & [2em] \mathrm{Categorical}(p_1, p_2, \ldots, p_{k-1}) \arrow[swap]{d}{\sum_i X_i \ \mathrm{(i.i.d.)}}   \\ [1em]
+    \mathrm{Binomial}(n, p) \arrow{r}{k \ \mathrm{classes}}  \arrow[swap]{d}{\substack{n\rightarrow\infty\\ np\rightarrow\mu}}
+        & [2em] \mathrm{Multinomial}(n, p_1, p_2, \ldots, p_{k-1})  \arrow[swap]{d}{\substack{n\rightarrow\infty\\ np_k\rightarrow\mu_k}}   \\ [1em]
+    \mathrm{Poisson}(\mu)  \arrow{r}{k \ \mathrm{ind. vars.}}  \arrow[swap]{d}{\substack{\mu\rightarrow\infty\\ \sigma^2 = \mu}}
+        & [2em] \bigotimes_k \mathrm{Poisson}(\mu_k)                       \\ [1em]
+    \mathrm{Normal}(\mu, \sigma^2)    \arrow[swap]{d}{\sum_i \left(\frac{X_i - \mu}{\sigma}\right)^2}
+        &                                               \\ [1em]
+    \chi^2(n)
+        &                                               \\
+\end{tikzcd}
 $$
